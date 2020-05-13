@@ -16,6 +16,8 @@ sudo snap install --classic phpstorm
 # install webstorm
 sudo snap install --classic webstorm
 
+sudo snap install slack --classic
+
 # cURL
 sudo apt install -y curl
 
