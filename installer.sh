@@ -76,3 +76,11 @@ echo "INSTALLING DOCKER..."
 sudo curl -L "https://github.com/docker/compose/releases/download/1.24.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 
 sudo chmod +x /usr/local/bin/docker-compose
+
+sudo apt-get install vim
+
+sudo apt-get install alacritty
+
+git clone https://github.com/cristianvena18/dotfiles
+
+cp -R /home/cristian/dotfiles /home/cristian
