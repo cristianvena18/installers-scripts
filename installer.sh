@@ -3,8 +3,10 @@ echo "UPDATING SYSTEM..."
 sudo apt update -y && sudo apt upgrade -y
 
 # Installer google chromium
-echo "INSTALLING CHROMIUN..."
-sudo apt-get install -y chromium-browser
+echo "INSTALLING CHROME..."
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo apt install ./google-chrome-stable_current_amd64.deb
+sudo rm google-chrome-stable_current_amd64.deb
 
 # install snap
 echo "INSTALLING SNAP..."
