@@ -83,6 +83,22 @@ sudo apt-get install vim
 
 sudo apt-get install alacritty
 
+sudo apt-get install xclip
+
 git clone https://github.com/cristianvena18/dotfiles
 
 cp -R /home/cristian/dotfiles /home/cristian
+
+echo "Quiere generar la clave ssh?"
+read answer
+
+if [ "$answer" != "${answer#[Yy]}" ] ; then
+	echo "Ingrese su mail"
+	read email
+	ssh-keygen -t rsa -b 4096 -C "$email" -y
+
+	if [ -d ~/.ssh/id_rsa.pub ] ; then
+		xclip -sel clip < ~/.ssh/id_rsa.pub
+		echo "Ssh copied to clipboard"
+	fi
+fi
