@@ -89,7 +89,7 @@ git clone https://github.com/cristianvena18/dotfiles
 
 HOME="/home/$USER"
 
-cp -R dotfiles "$HOME"
+cp -R dotfiles "$HOME/"
 
 echo "Quiere generar la clave ssh?"
 read answer
