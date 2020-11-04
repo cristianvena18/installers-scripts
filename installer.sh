@@ -51,9 +51,6 @@ sudo apt-get update && sudo apt-get install -y yarn
 echo "INSTALLING LERNA..."
 sudo yarn global add lerna
 
-# PM2 - Server only
-# sudo yarn global add pm2
-
 # Docker
 echo "INSTALLING DOCKER..."
 sudo apt install -y \
@@ -89,7 +86,7 @@ git clone https://github.com/cristianvena18/dotfiles
 
 HOME="/home/$USER"
 
-sudo cp -R dotfiles "$HOME/"
+sudo cp -R dotfiles/* "$HOME/"
 
 echo "Quiere generar la clave ssh?"
 read answer
@@ -105,4 +102,27 @@ if [ "$answer" != "${answer#[Yy]}" ] ; then
 		xclip -sel clip < ~/.ssh/id_rsa.pub
 		echo "Ssh copied to clipboard"
 	fi
+fi
+
+echo "Quiere instalar zsh?"
+read answer
+
+if [ "$answer" != "${answer#[Yy]}" ] ; then
+	sudo apt-get update
+	sudo apt-get install zsh -y
+	sudo sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" -y
+	
+fi
+
+"Quiere instalar searcher?"
+read answer
+
+if [ "$answer" != "${answer#[Yy]}" ] ; then
+	sudo apt-get update
+	sudo apt-get install python3-pip
+	pip3 install googletrans
+	pip3 install google
+	pip3 install wikipedia
+	sudo apt-get install python3-tk
+	git clone https://github.com/cristianvena18/utils-scripts scripts
 fi
