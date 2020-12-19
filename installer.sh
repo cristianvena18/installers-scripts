@@ -111,7 +111,7 @@ if [ "$answer" != "${answer#[Yy]}" ] ; then
 	sudo apt-get update
 	sudo apt-get install zsh -y
 	sudo sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" -y
-	
+	chsh -s $(which zsh)	
 fi
 
 "Quiere instalar searcher?"
