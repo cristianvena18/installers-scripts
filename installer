@@ -1,55 +1,47 @@
 # Actualizar el sistema
 echo "UPDATING SYSTEM..."
-sudo apt update -y && sudo apt upgrade -y
+sudo apt update -y && sudo apt upgrade -y &> /dev/null
 
 # Installer google chromium
 echo "INSTALLING CHROME..."
-wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-sudo apt install ./google-chrome-stable_current_amd64.deb
-sudo rm google-chrome-stable_current_amd64.deb
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb &> /dev/null
+sudo apt install ./google-chrome-stable_current_amd64.deb &> /dev/null
+sudo rm google-chrome-stable_current_amd64.deb &> /dev/null
 
 # install snap
 echo "INSTALLING SNAP..."
-sudo apt-get install -y snapd
+sudo apt-get install -y snapd &> /dev/null
 
 # install vscode
 echo "INSTALLING VSCODE..."
-sudo snap install --classic code
+sudo snap install --classic code &> /dev/null
 
 # install phpstorm
 echo "INSTALLING PHPSTORM..."
-sudo snap install --classic phpstorm
+sudo snap install --classic phpstorm &> /dev/null
 
 # install webstorm
 echo "INSTALLING WEBSTORM..."
-sudo snap install --classic webstorm
+sudo snap install --classic webstorm &> /dev/null
 
 
 echo "INSTALLING SLACK..."
-sudo snap install slack --classic
+sudo snap install slack --classic &> /dev/null
 
 # cURL
 echo "INSTALLING CURL..."
-sudo apt install -y curl
-
-# workbench
-echo "INSTALLING WORKBENCH..."
-sudo apt install -y mysql-workbench
+sudo apt install -y curl &> /dev/null
 
 # Node
 echo "INSTALLING NODE..."
-curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
-sudo apt install -y nodejs
+curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash - &> /dev/null
+sudo apt install -y nodejs &> /dev/null
 
 # Yarn
 echo "INSTALLING YARN..."
-curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
-echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-sudo apt-get update && sudo apt-get install -y yarn
-
-# Lerna
-echo "INSTALLING LERNA..."
-sudo yarn global add lerna
+curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add - &> /dev/null
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list &> /dev/null
+sudo apt-get update && sudo apt-get install -y yarn &> /dev/null
 
 # Docker
 echo "INSTALLING DOCKER..."
@@ -58,13 +50,14 @@ sudo apt install -y \
     ca-certificates \
     curl \
     gnupg-agent \
-    software-properties-common
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+    software-properties-common &> /dev/null
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add - &> /dev/null
 sudo add-apt-repository \
    "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
    $(lsb_release -cs) \
-   stable"
-sudo apt update && sudo apt install -y docker-ce docker-ce-cli containerd.io
+   stable" &> /dev/null
+sudo apt update &> /dev/null
+sudo apt install -y docker-ce docker-ce-cli containerd.io &> /dev/null
 
 sudo groupadd docker
 sudo usermod -aG docker $USER
@@ -72,21 +65,23 @@ echo "Log out and log back in so that your group membership is re-evaluated."
 
 # Docker-Compose
 echo "INSTALLING DOCKER..."
-sudo curl -L "https://github.com/docker/compose/releases/download/1.24.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo curl -L "https://github.com/docker/compose/releases/download/1.24.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose &> /dev/null
 
-sudo chmod +x /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose &> /dev/null
 
-sudo apt-get install vim
+sudo apt-get install vim &> /dev/null
 
-sudo apt-get install alacritty
+sudo apt-get install xterm &> /dev/null
 
-sudo apt-get install xclip
+sudo apt-get install xclip &> /dev/null
 
-git clone https://github.com/cristianvena18/dotfiles
+git clone https://github.com/cristianvena18/dotfiles dotfiles &> /dev/null
 
 HOME="/home/$USER"
 
-sudo cp -R dotfiles/* "$HOME/"
+sudo cp -R dotfiles/* "$HOME/" &> /dev/null
+
+rm -r dotfiles &> /dev/null
 
 echo "Quiere generar la clave ssh?"
 read answer
@@ -95,7 +90,6 @@ if [ "$answer" != "${answer#[Yy]}" ] ; then
 	echo "Ingrese su mail"
 	read email
 	
-
 	ssh-keygen -t rsa -b 4096 -C "$email"	
 
 	if [ -f "$HOME/.ssh/id_rsa.pub" ] ; then
@@ -108,21 +102,22 @@ echo "Quiere instalar zsh?"
 read answer
 
 if [ "$answer" != "${answer#[Yy]}" ] ; then
-	sudo apt-get update
-	sudo apt-get install zsh -y
-	sudo sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" -y
-	chsh -s $(which zsh)	
+	sudo apt-get update &> /dev/null
+	sudo apt-get install zsh -y &> /dev/null
+	sudo sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" -y &> /dev/null
+	chsh -s $(which zsh) &> /dev/null
 fi
 
 "Quiere instalar searcher?"
 read answer
 
 if [ "$answer" != "${answer#[Yy]}" ] ; then
-	sudo apt-get update
-	sudo apt-get install python3-pip
-	pip3 install googletrans
-	pip3 install google
-	pip3 install wikipedia
-	sudo apt-get install python3-tk
-	git clone https://github.com/cristianvena18/utils-scripts scripts
+	sudo apt-get update &> /dev/null
+	sudo apt-get install python3-pip &> /dev/null
+	pip3 install googletrans &> /dev/null
+	pip3 install google &> /dev/null
+	pip3 install wikipedia &> /dev/null
+	sudo apt-get install python3-tk &> /dev/null
+	git clone https://github.com/cristianvena18/utils-scripts scripts &> /dev/null
+	mv scripts ~/Documents/scripts &> /dev/null
 fi
