@@ -69,11 +69,11 @@ sudo curl -L "https://github.com/docker/compose/releases/download/1.24.1/docker-
 
 sudo chmod +x /usr/local/bin/docker-compose &> /dev/null
 
-echo "installing vim, xterm xclip fzf and rofi..."
+echo "INSTALLING VIM ALACRITTY XCLIP FZF AND ROFI."
 
 sudo apt-get install vim &> /dev/null
 
-sudo apt-get install xterm &> /dev/null
+sudo apt-get install alacritty &> /dev/null
 
 sudo apt-get install xclip &> /dev/null
 
