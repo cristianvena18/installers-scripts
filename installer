@@ -59,8 +59,8 @@ sudo add-apt-repository \
 sudo apt update &> /dev/null
 sudo apt install -y docker-ce docker-ce-cli containerd.io &> /dev/null
 
-sudo groupadd docker
-sudo usermod -aG docker $USER
+sudo groupadd docker &> /dev/null
+sudo usermod -aG docker $USER &> /dev/null
 echo "Log out and log back in so that your group membership is re-evaluated."
 
 # Docker-Compose
@@ -69,11 +69,17 @@ sudo curl -L "https://github.com/docker/compose/releases/download/1.24.1/docker-
 
 sudo chmod +x /usr/local/bin/docker-compose &> /dev/null
 
+echo "installing vim, xterm xclip fzf and rofi..."
+
 sudo apt-get install vim &> /dev/null
 
 sudo apt-get install xterm &> /dev/null
 
 sudo apt-get install xclip &> /dev/null
+
+sudo apt-get install fzf &> /dev/null
+
+sudo apt-get install rofi &> /dev/null
 
 git clone https://github.com/cristianvena18/dotfiles dotfiles &> /dev/null
 
