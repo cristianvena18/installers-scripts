@@ -114,7 +114,7 @@ if [ "$answer" != "${answer#[Yy]}" ] ; then
 	chsh -s $(which zsh) &> /dev/null
 fi
 
-"Quiere instalar searcher?"
+echo "Quiere instalar searcher?"
 read answer
 
 if [ "$answer" != "${answer#[Yy]}" ] ; then
